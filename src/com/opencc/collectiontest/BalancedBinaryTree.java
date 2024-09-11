@@ -147,12 +147,70 @@ public class BalancedBinaryTree {
             root.right = deleteRec(root.right, val);
         } else { // 需要删除节点就是当前节点本身。
             //todo 删除前需要判断是否存在左子树和右子树
-            if (root.left == null) {
+            // 找到要删除的节点
+            if (root.left == null || root.right == null) {
+                TreeNodeB temp = null;
+                if (temp == root.left) {
+                    temp = root.right;
+                } else {
+                    temp = root.left;
+                }
 
+                if (temp == null) {
+                    temp = root;
+                    root = null;
+                } else {
+                    root = temp;
+                }
+            } else {
+                // 有两个子节点，找到右子树中的最小节点
+                TreeNodeB temp = findMinValue(root.right);
+                root.val = temp.val;
+                root.right = deleteRec(root.right, temp.val);
             }
-
         }
-    return null;
+        if (root == null) {
+            return root;
+        }
+
+        // 更新节点高度
+        root.height = 1 + Math.max(height(root.left), height(root.right));
+
+        // 检查平衡因子并进行调整
+        int balance = balanceFactor(root);
+
+        // 左子树不平衡
+        if (balance > 1) {
+            // 左子树的左子树高度大于左子树的右子树高度
+            if (balanceFactor(root.left) >= 0) {
+                return rightRotate(root);
+            } else {
+                // 左子树的右子树高度大于左子树的左子树高度
+                root.left = leftRotate(root.left);
+                return rightRotate(root);
+            }
+        }
+
+        // 右子树不平衡
+        if (balance < -1) {
+            // 右子树的右子树高度大于右子树的左子树高度
+            if (balanceFactor(root.right) <= 0) {
+                return leftRotate(root);
+            } else {
+                // 右子树的左子树高度大于右子树的右子树高度
+                root.right = rightRotate(root.right);
+                return leftRotate(root);
+            }
+        }
+
+        return root;
+    }
+    private TreeNodeB findMinValue(TreeNodeB node) {
+        TreeNodeB current = node;
+        while (current.left!= null) {
+            current = current.left;
+        }
+        return current;
     }
 
     public static void main(String[] args) {
