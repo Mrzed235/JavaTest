@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 /**
  * 模拟目录管理：支持嵌套目录
+ * 目录管理器
+ * <a href="https://www.nowcoder.com/issue/tutorial?zhuanlanId=MgbyJj&uuid=046b5650d7d44b35bfc15517c866384d">...</a>
  * <a href="https://www.nowcoder.com/discuss/661675346583990272?sourceSSR=search">...</a>
  * 题目描述
  * 实现一个模拟目录管理功能的软件，输入一个命令序列，输出最后一条命令运行结果。支持命令：创建目录命令：mkdir 目录名称，如 mkdir abc 为在当前目录创建abc目录，
