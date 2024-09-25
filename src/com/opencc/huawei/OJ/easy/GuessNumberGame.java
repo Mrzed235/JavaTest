@@ -1,4 +1,4 @@
-package com.opencc.huawei.OJ;
+package com.opencc.huawei.OJ.easy;
 
 import java.util.ArrayList;
 import java.util.List;

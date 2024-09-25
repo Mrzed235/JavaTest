@@ -1,4 +1,4 @@
-package com.opencc.huawei.OJ;
+package com.opencc.huawei.OJ.easy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +47,7 @@ public class OJTest1 {
             result.add(sb.toString());
         }
         if (result.isEmpty()) {
-            result.add("NO");
+            result.add("No");
         }
         return result;
     }

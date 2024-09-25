@@ -1,4 +1,4 @@
-package com.opencc.huawei.OJ;
+package com.opencc.huawei.OJ.easy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
