@@ -3,7 +3,7 @@ package com.opencc.huawei.OJ.hard;
 import java.util.Scanner;
 
 /**
- * 查找充电设备：
+ * 查找充电设备组合：
  * <a href="https://www.nowcoder.com/issue/tutorial?zhuanlanId=MgbyJj&uuid=6ca016d7534546d780d14f3e349dc7b3">...</a>
  * 问题描述
  * 某个充电站可提供N个充电设备，每个充电设备均有对应的输出功率。任意个充电设备组合的输出功率总和，均构成功率集合P的1个元素。功率集合P的最优元素，表示最接近充电站最大输出功率Pmax的元素。
@@ -43,10 +43,10 @@ public class OJTest3 {
             powers[i] = Integer.parseInt(nums[i]);
         }
         int pMax = Integer.parseInt(in.nextLine());
-        System.out.println(solve(powers, pMax, n));
+        System.out.println(solve(powers, pMax));
     }
 
-    private static int solve(int[] powers, int pMax, int n) {
+    private static int solve(int[] powers, int pMax) {
         // 初始化 dp 数组，dp[i] 表示是否可以达到功率 i
         boolean[] dp = new boolean[pMax + 1];
         dp[0] = true; // 总是可以达到 0 功率
