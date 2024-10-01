@@ -168,6 +168,25 @@ public class Common {
         return res;
     }
 
+    /**
+     * 将输入类型为[[1,1],[2,3]] 转化为二维数组
+     * @param input
+     * @return
+     */
+    public static int[][] parse(String input) {
+        String[] rows = input.substring(2, input.length() - 2).split("],\\[");
+        int[][] result = new int[rows.length][];
+        for (int i = 0; i < rows.length; i++) {
+            String[] values = rows[i].split(",");
+            int[] row = new int[values.length];
+            for (int j = 0; j < values.length; j++) {
+                row[j] = Integer.parseInt(values[j]);
+            }
+            result[i] = row;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
 //        Scanner in = new Scanner(System.in);
 //        int[] nums = parseStrArrToIntArr(in.nextLine()); //  [3,5,2,-2,4,1]
