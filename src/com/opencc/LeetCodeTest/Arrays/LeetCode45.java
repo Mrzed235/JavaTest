@@ -1,5 +1,8 @@
-package com.opencc.LeetCodeTest;
+package com.opencc.LeetCodeTest.Arrays;
 
+import com.opencc.LeetCodeTest.Common;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -90,6 +93,22 @@ public class LeetCode45 {
             }
         }
         return step;
+    }
+
+    //动态规划求解，类似于凑硬币
+
+    public int jump4(int[] nums) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 1; j <= nums[i]; j++) {
+                if (i + j < nums.length) {
+                    dp[i + j] = Math.min(dp[i + j], dp[i] + 1);
+                }
+            }
+        }
+        return dp[nums.length - 1];
     }
 
     public static void main(String[] args) {

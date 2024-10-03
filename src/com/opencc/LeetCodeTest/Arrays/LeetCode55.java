@@ -1,4 +1,6 @@
-package com.opencc.LeetCodeTest;
+package com.opencc.LeetCodeTest.Arrays;
+
+import com.opencc.LeetCodeTest.Common;
 
 import java.util.Scanner;
 
