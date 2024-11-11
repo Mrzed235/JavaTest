@@ -14,7 +14,7 @@ public class LeetCode417 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int[][] heights = Common.parse(in.nextLine());
+        int[][] heights = Common.parseToDoubleArray(in.nextLine());
         LeetCode417 lt = new LeetCode417();
         List<List<Integer>> res = lt.pacificAtlantic(heights);
         List<List<Integer>> res2 = lt.pacificAtlantic2(heights);

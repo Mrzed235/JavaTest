@@ -22,8 +22,8 @@ public class LeetCode1905 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int[][] grid1 = Common.parse(in.nextLine());
-        int[][] grid2 = Common.parse(in.nextLine());
+        int[][] grid1 = Common.parseToDoubleArray(in.nextLine());
+        int[][] grid2 = Common.parseToDoubleArray(in.nextLine());
         int[][] grid2Back = new int[grid2.length][grid2[0].length];
         for (int i = 0; i < grid2Back.length; i++) {
             grid2Back[i] = Arrays.copyOf(grid2[i], grid2[i].length);

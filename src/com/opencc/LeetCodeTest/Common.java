@@ -57,6 +57,7 @@ public class Common {
 
     /**
      * 优先队列构造滑动窗口求窗口内最大值。
+     *
      * @param nums
      * @param k
      * @return res
@@ -90,6 +91,7 @@ public class Common {
 
     /**
      * 单调队列的：LinkedList实现双端队列
+     *
      * @param nums
      * @param k
      * @return
@@ -128,6 +130,7 @@ public class Common {
 
     /**
      * 数组实现单调队列，queue数组用来保存构成单调递减的数组下标，利用tail--重新赋值来实现从队尾出队重新进队的功能。
+     *
      * @param nums
      * @param k
      * @return
@@ -170,10 +173,11 @@ public class Common {
 
     /**
      * 将输入类型为[[1,1],[2,3]] 转化为二维数组
+     *
      * @param input
      * @return
      */
-    public static int[][] parse(String input) {
+    public static int[][] parseToDoubleArray(String input) {
         String[] rows = input.substring(2, input.length() - 2).split("],\\[");
         int[][] result = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
@@ -187,6 +191,28 @@ public class Common {
         return result;
     }
 
+    /**
+     * 将输入["eat", "tea", "tan", "ate", "nat", "bat"]转为String数组
+     * @param input
+     * @return String[]
+     */
+    public static String[] parseToStringArray(String input) {
+        return input.replace("[", "").replace("]", "").replace("\"", "").split(",");
+    }
+
+    /**
+     * 将输入：[["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."]]转为数独棋盘
+     * @param s
+     * @return char[][]
+     */
+    public static char[][] parseSuDoKu(String s) {
+        String[] strs = s.substring(2, s.length() - 2).replace("\"", "").replace(",", "").split("]\\[");
+        char[][] res = new char[strs.length][strs[0].length()];
+        for (int i = 0; i < strs.length; i++) {
+            res[i] = strs[i].toCharArray();
+        }
+        return res;
+    }
     public static void main(String[] args) {
 //        Scanner in = new Scanner(System.in);
 //        int[] nums = parseStrArrToIntArr(in.nextLine()); //  [3,5,2,-2,4,1]
@@ -195,8 +221,10 @@ public class Common {
 //        int[] prefix = preFixCount(nums);
 //        int i = 2, j = 5;
 //        System.out.println(prefix[j + 1] - prefix[i]);
-        int[] res = maxSlidingWindowArr(new int[]{1,3,-3,-1,-2,-3,6,7}, 3);
+        int[] res = maxSlidingWindowArr(new int[]{1, 3, -3, -1, -2, -3, 6, 7}, 3);
         System.out.println(Arrays.toString(res));
 
     }
+
+
 }

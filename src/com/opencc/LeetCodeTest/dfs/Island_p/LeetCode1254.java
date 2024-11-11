@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class LeetCode1254 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int[][] grid = Common.parse(in.nextLine());
+        int[][] grid = Common.parseToDoubleArray(in.nextLine());
         System.out.println(new LeetCode1254().closedIsland(grid));
     }
 

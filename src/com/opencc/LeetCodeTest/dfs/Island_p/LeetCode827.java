@@ -13,7 +13,7 @@ public class LeetCode827 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int[][] grid = Common.parse(in.nextLine());
+        int[][] grid = Common.parseToDoubleArray(in.nextLine());
         LeetCode827 lt = new LeetCode827();
         System.out.println(lt.largestIsland(grid));
         System.out.println(lt.largestIsland2(grid));

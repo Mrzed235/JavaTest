@@ -17,7 +17,7 @@ public class LeetCode695 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int[][] grid = Common.parse(in.nextLine());
+        int[][] grid = Common.parseToDoubleArray(in.nextLine());
         System.out.println(maxAreaOfIsland(grid));
     }
 

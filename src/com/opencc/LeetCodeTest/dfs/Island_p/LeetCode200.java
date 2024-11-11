@@ -19,7 +19,7 @@ public class LeetCode200 {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
         input = input.replace("\"", "");
-        int[][] grid = Common.parse(input);
+        int[][] grid = Common.parseToDoubleArray(input);
         System.out.println(findGridNums(grid));
     }
 
