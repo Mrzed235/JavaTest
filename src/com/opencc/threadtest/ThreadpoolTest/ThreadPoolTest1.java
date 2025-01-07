@@ -41,6 +41,11 @@ public class ThreadPoolTest1 {
         pool.shutdown();
 
         Future<?> submit = executorService.submit(task1);
+        try {
+            submit.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

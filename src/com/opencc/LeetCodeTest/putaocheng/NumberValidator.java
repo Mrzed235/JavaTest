@@ -32,48 +32,47 @@ public class NumberValidator {
 
     private static String ValidIfDecimalOrHexadecimal(String input) {
         if (input == null || input.isEmpty()) {
-            return ("\"" + input + "\" 是不合法的数字.");
+            return "\"" + input + "\" 是不合法的数字.";
         }
         // 处理正负号
         if (input.charAt(0) == '-' || input.charAt(0) == '+') {
             input = input.substring(1);
         }
 
+        //如果以.开头或者0开头的数字类似00，01 为不合法字符串
+        if (input.charAt(0) == '.' || (input.charAt(0) == '0' && input.length() > 1 && digits.indexOf(input.charAt(1)) != -1)) {
+            return "\"" + input + "\" 是不合法的数字.";
+        }
+
         boolean isDecimal = isDecimal(input);
         boolean isHexadecimal = isHexadecimal(input);
         if (isDecimal && isHexadecimal) {
-            return ("\"" + input + "\" 既是合法的十进制数字，也是合法的十六进制数字.");
+            return "\"" + input + "\" 既是合法的十进制数字，也是合法的十六进制数字.";
         } else if (isDecimal) {
-            return ("\"" + input + "\" 是合法的十进制数字.");
+            return "\"" + input + "\" 是合法的十进制数字.";
         } else if (isHexadecimal) {
-            return ("\"" + input + "\" 是合法的十六进制数字.");
+            return "\"" + input + "\" 是合法的十六进制数字.";
         } else {
-            return ("\"" + input + "\" 是不合法的数字.");
+            return "\"" + input + "\" 是不合法的数字.";
         }
     }
 
     public static boolean isDecimal(String str) {
         int index = 0;
         int length = str.length();
-
-        //如果以.开头或者0开头的数字类似00，01 为不合法字符串
-        if (str.charAt(index) == '.' || (str.charAt(index) == '0' && length > 1 && digits.indexOf(str.charAt(index + 1)) != -1)) {
-            return false;
-        }
-
-        boolean decimalPointSeen = false;
-        boolean exponentSeen = false;
+        boolean pointFlag = false;
+        boolean eFlag = false;
 
         for (; index < length; index++) {
             char c = str.charAt(index);
 
             if (c == '.') {
-                if (decimalPointSeen) {
+                if (pointFlag) {
                     return false;
                 }
-                decimalPointSeen = true;
+                pointFlag = true;
             } else if (c == 'e' || c == 'E') {
-                exponentSeen = true;
+                eFlag = true;
 
                 // 检查指数部分的正负号
                 if (index + 1 < length && (str.charAt(index + 1) == '-' || str.charAt(index + 1) == '+')) {
@@ -94,7 +93,7 @@ public class NumberValidator {
         }
 
         // 处理科学记数法中指数部分缺失的情况
-        if (exponentSeen && index + 1 == length) {
+        if (eFlag && index + 1 == length) {
             return false;
         }
 
@@ -103,21 +102,15 @@ public class NumberValidator {
 
     private static boolean isHexadecimal(String str) {
         int index = 0;
-        //如果以.开头或者0开头的数字类似00，01 为不合法字符串
-        if (str.charAt(index) == '.' || (str.charAt(index) == '0' && str.length() > 1 && digits.indexOf(str.charAt(index + 1)) != -1)) {
-            return false;
-        }
-
-        boolean decimalPointSeen = false;
-
+        boolean pointFlag = false;
         for (; index < str.length(); index++) {
             char c = str.charAt(index);
 
             if (c == '.') {
-                if (decimalPointSeen) {
+                if (pointFlag) {
                     return false;
                 }
-                decimalPointSeen = true;
+                pointFlag = true;
             } else if (digits.indexOf(c) == -1 && hexDigits.indexOf(c) == -1) {
                 return false;
             }

@@ -28,7 +28,7 @@ class Singleton{
 
     public static Singleton getInstance() {
         if (singleton == null) { //第一次检查
-            synchronized (SingletonTest.class) {
+            synchronized (Singleton.class) {
                 if (singleton == null) { //第二次检查
                     singleton = new Singleton();
                 }
